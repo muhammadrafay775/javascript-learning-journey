@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Assignment 6 | Shopping List</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:40px 20px;
+background:linear-gradient(-45deg,#0f172a,#1e293b,#312e81,#0f766e);
+background-size:400% 400%;
+animation:bg 10s infinite ease;
+color:white;
+
+}
+
+@keyframes bg{
+
+0%{background-position:0% 50%;}
+
+50%{background-position:100% 50%;}
+
+100%{background-position:0% 50%;}
+
+}
+
+.container{
+
+width:100%;
+max-width:900px;
+
+}
+
+.back-btn{
+
+display:inline-flex;
+gap:10px;
+align-items:center;
+text-decoration:none;
+padding:12px 24px;
+background:#2563eb;
+color:white;
+border-radius:50px;
+margin-bottom:25px;
+transition:.3s;
+
+}
+
+.back-btn:hover{
+
+transform:translateX(-5px);
+
+}
+
+.card{
+
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+padding:40px;
+border-radius:25px;
+border:1px solid rgba(255,255,255,.15);
+
+}
+
+.badge{
+
+display:inline-block;
+padding:10px 24px;
+border-radius:50px;
+background:linear-gradient(45deg,#06b6d4,#2563eb);
+margin-bottom:20px;
+font-weight:bold;
+
+}
+
+h1{
+
+font-size:40px;
+margin-bottom:10px;
+
+}
+
+.description{
+
+color:#cbd5e1;
+margin-bottom:35px;
+
+}
+
+.input-group{
+
+display:flex;
+gap:15px;
+margin-bottom:35px;
+
+}
+
+input{
+
+flex:1;
+padding:16px;
+border:none;
+outline:none;
+border-radius:12px;
+background:rgba(255,255,255,.08);
+color:white;
+font-size:16px;
+
+}
+
+input::placeholder{
+
+color:#cbd5e1;
+
+}
+
+button{
+
+padding:16px 25px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+background:linear-gradient(45deg,#06b6d4,#2563eb);
+color:white;
+font-size:16px;
+font-weight:600;
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:translateY(-4px);
+
+}
+
+.result-card{
+
+background:#111827;
+padding:25px;
+border-radius:20px;
+
+}
+
+.result-card h2{
+
+margin-bottom:20px;
+
+}
+
+.item{
+
+display:flex;
+align-items:center;
+gap:12px;
+padding:15px;
+margin-bottom:12px;
+background:rgba(255,255,255,.08);
+border-radius:12px;
+
+}
+
+.item i{
+
+color:#22c55e;
+
+}
+
+#totalItems{
+
+margin-top:20px;
+color:#38bdf8;
+
+}
+
+@media(max-width:768px){
+
+.input-group{
+
+flex-direction:column;
+
+}
+
+h1{
+
+font-size:30px;
+
+}
+
+.card{
+
+padding:25px;
+
+}
+
+}</style>
+<body>
+
+    <div class="container">
+
+        <a href="index.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Home
+        </a>
+
+        <div class="card">
+
+            <span class="badge">Assignment 06</span>
+
+            <h1>
+                <i class="fa-solid fa-cart-shopping"></i>
+                Shopping List Manager
+            </h1>
+
+            <p class="description">
+                Add new shopping items and manage your shopping list using JavaScript Arrays.
+            </p>
+
+            <div class="input-group">
+
+                <input type="text" id="itemInput" placeholder="Enter Shopping Item">
+
+                <button id="addItemButton">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Item
+                </button>
+
+            </div>
+
+            <div class="result-card">
+
+                <h2>
+                    <i class="fa-solid fa-list"></i>
+                    Shopping List
+                </h2>
+
+                <div id="shoppingList"></div>
+
+                <h3 id="totalItems"></h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+<script>
+
+let input=document.getElementById("itemInput");
+let button=document.getElementById("addItemButton");
+let list=document.getElementById("shoppingList");
+let total=document.getElementById("totalItems");
+
+let shopping=["Milk","Bread","Eggs","Rice","Sugar"];
+
+function showList(){
+
+list.innerHTML="";
+
+for(let i=0;i<shopping.length;i++){
+
+list.innerHTML+=`
+<div class="item">
+<i class="fa-solid fa-basket-shopping"></i>
+<span>${shopping[i]}</span>
+</div>
+`;
+
+}
+
+total.innerHTML="Total Items : "+shopping.length;
+
+}
+
+button.addEventListener("click",function(){
+
+if(input.value.trim()==""){
+
+alert("Please enter an item.");
+
+return;
+
+}
+
+shopping.push(input.value);
+
+showList();
+
+input.value="";
+
+});
+
+showList();
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Assignment 2</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:40px 20px;
+background:linear-gradient(-45deg,#0f172a,#1e293b,#312e81,#0f766e);
+background-size:400% 400%;
+animation:bg 12s infinite ease;
+color:white;
+
+}
+
+@keyframes bg{
+
+0%{background-position:0% 50%;}
+
+50%{background-position:100% 50%;}
+
+100%{background-position:0% 50%;}
+
+}
+
+.container{
+
+width:100%;
+max-width:1150px;
+
+}
+
+.back-btn{
+
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:12px 24px;
+background:#2563eb;
+color:white;
+text-decoration:none;
+border-radius:50px;
+margin-bottom:25px;
+font-weight:600;
+transition:.3s;
+
+}
+
+.back-btn:hover{
+
+transform:translateX(-5px);
+
+}
+
+.card{
+
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+padding:40px;
+border-radius:25px;
+border:1px solid rgba(255,255,255,.15);
+
+}
+
+.logo{
+
+width:90px;
+height:90px;
+margin:auto;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:45px;
+background:linear-gradient(45deg,#06b6d4,#2563eb);
+margin-bottom:20px;
+
+}
+
+h1{
+
+text-align:center;
+font-size:42px;
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+text-align:center;
+color:#cbd5e1;
+margin-bottom:40px;
+
+}
+
+.topics{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+
+}
+
+.topic{
+
+background:rgba(255,255,255,.07);
+padding:25px;
+border-radius:18px;
+text-align:center;
+transition:.3s;
+
+}
+
+.topic:hover{
+
+transform:translateY(-8px);
+box-shadow:0 15px 30px rgba(0,255,255,.2);
+
+}
+
+.topic i{
+
+font-size:35px;
+margin-bottom:15px;
+color:#38bdf8;
+
+}
+
+.console{
+
+margin-top:40px;
+background:#111827;
+padding:30px;
+border-left:5px solid #06b6d4;
+border-radius:18px;
+text-align:center;
+
+}
+
+.console i{
+
+font-size:40px;
+color:#38bdf8;
+margin-bottom:15px;
+
+}
+
+.console h2{
+
+margin-bottom:10px;
+
+}
+
+.console p{
+
+color:#cbd5e1;
+line-height:1.8;
+
+}
+
+@media(max-width:768px){
+
+.card{
+
+padding:25px;
+
+}
+
+h1{
+
+font-size:30px;
+
+}
+
+}</style>
+<body>
+
+<div class="container">
+
+<a href="index.html" class="back-btn">
+<i class="fa-solid fa-arrow-left"></i>
+Back to Home
+</a>
+
+<div class="card">
+
+<div class="logo">
+<i class="fa-brands fa-js"></i>
+</div>
+
+<h1>JavaScript Assignment 2</h1>
+
+<p class="subtitle">
+If • Else • Else If Statements
+</p>
+
+<div class="topics">
+
+<div class="topic">
+<i class="fa-solid fa-code"></i>
+<h3>Even / Odd</h3>
+</div>
+
+<div class="topic">
+<i class="fa-solid fa-arrow-up"></i>
+<h3>Positive / Negative</h3>
+</div>
+
+<div class="topic">
+<i class="fa-solid fa-user"></i>
+<h3>Age Checker</h3>
+</div>
+
+<div class="topic">
+<i class="fa-solid fa-school"></i>
+<h3>Marks Result</h3>
+</div>
+
+<div class="topic">
+<i class="fa-solid fa-temperature-three-quarters"></i>
+<h3>Weather</h3>
+</div>
+
+<div class="topic">
+<i class="fa-solid fa-bolt"></i>
+<h3>Battery Status</h3>
+</div>
+
+<div class="topic">
+<i class="fa-solid fa-gauge-high"></i>
+<h3>Speed Checker</h3>
+</div>
+
+<div class="topic">
+<i class="fa-solid fa-file-invoice-dollar"></i>
+<h3>Electric Bill</h3>
+</div>
+
+<div class="topic">
+<i class="fa-solid fa-user-lock"></i>
+<h3>Login System</h3>
+</div>
+
+<div class="topic">
+<i class="fa-solid fa-shapes"></i>
+<h3>Triangle Checker</h3>
+</div>
+
+<div class="topic">
+<i class="fa-solid fa-tags"></i>
+<h3>Discount System</h3>
+</div>
+
+</div>
+
+<div class="console">
+
+<i class="fa-solid fa-terminal"></i>
+
+<h2>Console Output</h2>
+
+<p>
+Press <strong>F12</strong> → <strong>Console</strong> to view all answers.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+    // javascript assignment 2  — if / else / else if
+
+// Question 1
+let num = 7;
+if(num % 2 === 0){
+    console.log("is even" + num); 
+}else{
+    console.log("is odd" + num); 
+}
+
+// Question 2
+let number2 = -5;
+if (number2 > 0) {
+    console.log("Positive number");
+} else if (number2 < 0) {
+    console.log("Negative number");
+} else {
+    console.log("Zero");
+}
+
+// Question 3
+let a = 15
+let b = 20
+if(a == b){
+    console.log("A is lower =" + a);
+}else{
+    console.log("B is bigger =" + b);
+}
+
+// Question 
+let marks = 35;
+if (marks >= 40) {
+    console.log("Passed");
+} else {
+    console.log("Failed");
+}
+
+// Question 5
+let age = 14;
+if (age <= 12) {
+    console.log("Child");
+} else if (age <= 17) {
+    console.log("Teenager");
+} else {
+    console.log("Adult");
+}
+
+// Question 6
+let karachi = 38;
+let lahore = 42;
+if (karachi > lahore) {
+    console.log("Karachi is hotter");
+} else if (lahore > karachi) {
+    console.log("Lahore is hotter");
+} else {
+    console.log("Both cities have same temperature");
+}
+
+// Question 7
+let bill = 750;
+if (bill >= 1000) {
+    console.log("10% discount applied");
+} else if (bill >= 500) {
+    console.log("5% discount applied");
+} else {
+    console.log("No discount");
+}
+
+// Question 8
+let battery = 18;
+if (battery >= 50) {
+    console.log("Battery Good");
+} else if (battery >= 20) {
+    console.log("Battery Low, plug in soon");
+} else {
+    console.log("Critical! Plug in now!");
+}
+
+// Question 9
+let day = 6;
+if (day >= 1 && day <= 5) {
+    console.log("Weekday, go to school");
+} else if (day >= 6 && day <= 7) {
+    console.log("Weekend, enjoy!");
+} else {
+    console.log("Invalid day");
+}
+
+// Question 10
+let speed = 95;
+if (speed < 60) {
+    console.log("Safe driving");
+} else if (speed <= 80) {
+    console.log("Slight overspeed, warning");
+} else if (speed <= 120) {
+    console.log("Fine: Rs 500");
+} else {
+    console.log("Heavy fine: Rs 2000 + license cancelled");
+}
+
+// Question 11
+let units = 150;
+let rate;
+if (units <= 100) {
+    rate = 5;
+} else if (units <= 300) {
+    rate = 10;
+} else {
+    rate = 20;
+}
+let totalBill = units * rate;
+console.log("Total bill: Rs " + totalBill);
+
+// Question 12
+let username = "student";
+let password = "abc123";
+if (username !== "student") {
+    console.log("Username not found");
+} else if (password !== "abc123") {
+    console.log("Wrong password");
+} else {
+    console.log("Login successful!");
+}
+
+// Question 13
+
+let side1 = 5;
+let side2 = 5;
+let side3 = 8;
+if (side1 === side2 && side2 === side3) {
+    console.log("Equilateral triangle");
+} else if (
+    side1 === side2 ||
+    side1 === side3 ||
+    side2 === side3
+) {
+    console.log("Isosceles triangle");
+} else {
+    console.log("Scalene triangle");
+}
+
+// Question 14
+let items = 12;
+let isMember = false;
+if (items >= 10 && isMember === true) {
+    console.log("20% discount");
+} else if (items >= 10 && isMember === false) {
+    console.log("10% discount");
+} else if (items < 10 && isMember === true) {
+    console.log("5% discount");
+} else {
+    console.log("No discount");
+}
+</script>
+
+</body>
+
+</html>

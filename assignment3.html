@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Assignment 3</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:40px 20px;
+background:linear-gradient(-45deg,#0f172a,#1e293b,#312e81,#0f766e);
+background-size:400% 400%;
+animation:bg 12s infinite ease;
+color:white;
+
+}
+
+@keyframes bg{
+
+0%{background-position:0% 50%;}
+
+50%{background-position:100% 50%;}
+
+100%{background-position:0% 50%;}
+
+}
+
+.container{
+
+width:100%;
+max-width:1100px;
+
+}
+
+.back-btn{
+
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:12px 22px;
+background:#2563eb;
+color:white;
+text-decoration:none;
+border-radius:50px;
+font-weight:600;
+margin-bottom:25px;
+transition:.3s;
+
+}
+
+.back-btn:hover{
+
+transform:translateX(-5px);
+
+}
+
+.card{
+
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+padding:40px;
+border-radius:25px;
+border:1px solid rgba(255,255,255,.15);
+
+}
+
+.logo{
+
+width:90px;
+height:90px;
+margin:auto;
+border-radius:50%;
+background:linear-gradient(45deg,#06b6d4,#2563eb);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:45px;
+margin-bottom:20px;
+
+}
+
+h1{
+
+text-align:center;
+font-size:40px;
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+text-align:center;
+color:#cbd5e1;
+margin-bottom:35px;
+
+}
+
+.info{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-bottom:40px;
+
+}
+
+.box{
+
+background:rgba(255,255,255,.06);
+padding:25px;
+border-radius:18px;
+text-align:center;
+transition:.3s;
+
+}
+
+.box:hover{
+
+transform:translateY(-8px);
+
+}
+
+.box i{
+
+font-size:35px;
+margin-bottom:15px;
+color:#38bdf8;
+
+}
+
+.console-box{
+
+background:#111827;
+padding:30px;
+border-radius:20px;
+text-align:center;
+border-left:5px solid #06b6d4;
+
+}
+
+.console-box i{
+
+font-size:40px;
+margin-bottom:15px;
+color:#38bdf8;
+
+}
+
+.console-box h2{
+
+margin-bottom:15px;
+
+}
+
+.console-box p{
+
+color:#cbd5e1;
+line-height:1.8;
+
+}
+
+@media(max-width:768px){
+
+h1{
+
+font-size:30px;
+
+}
+
+.card{
+
+padding:25px;
+
+}
+
+}</style>
+<body>
+
+    <div class="container">
+
+        <a href="index.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Home
+        </a>
+
+        <div class="card">
+
+            <div class="logo">
+                <i class="fa-brands fa-js"></i>
+            </div>
+
+            <h1>JavaScript Assignment 3</h1>
+
+            <p class="subtitle">
+                Conditional Statements (if / else)
+            </p>
+
+            <div class="info">
+
+                <div class="box">
+                    <i class="fa-solid fa-user-graduate"></i>
+                    <h3>Student Result</h3>
+                </div>
+
+                <div class="box">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <h3>Online Shopping</h3>
+                </div>
+
+                <div class="box">
+                    <i class="fa-solid fa-gamepad"></i>
+                    <h3>Gaming Platform</h3>
+                </div>
+
+                <div class="box">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <h3>Bank Account</h3>
+                </div>
+
+                <div class="box">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <h3>Event Registration</h3>
+                </div>
+
+                <div class="box">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <h3>Job Portal</h3>
+                </div>
+
+                <div class="box">
+                    <i class="fa-solid fa-school"></i>
+                    <h3>University Admission</h3>
+                </div>
+
+            </div>
+
+            <div class="console-box">
+
+                <i class="fa-solid fa-terminal"></i>
+
+                <h2>Open Browser Console</h2>
+
+                <p>
+                    Press <b>F12</b> → <b>Console</b> to view all program outputs.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+   <script>
+// Javascript Assignment 3
+
+// Challenge no 1
+ let obtainedMarks = 72;
+    let passingMarks = 40;
+    let attendance = 85;
+    let requiredAttendance = 75;
+    // 1. Check if the student has passed.
+    if (obtainedMarks >= passingMarks) { console.log("Student is passed") }
+    else { console.log("Student is failed") }
+    // 2. Check if attendance meets the requirement.
+    if (attendance >= requiredAttendance) { console.log("Attendance is OK") }
+    else { console.log("Attendance is not OK") }
+    // 3. Check if the student can sit in the final exam (must pass AND have required attendance).
+    if (attendance >= requiredAttendance && obtainedMarks >= passingMarks) { console.log("Student can sit") }
+    else { console.log("Student cannot Sit") }
+    // 4. Check if the student qualifies for a scholarship (marks greater than 70 OR attendance greater than 90).
+    if (attendance >= 90 || obtainedMarks > 70) { console.log("Scholar ship mil jaegi") }
+    else { console.log("Scholar ship nahn milegi") }
+// ==================== MIXED CHALLENGE 2 — ONLINE SHOPPING WEBSITE ====================
+
+let cartTotal = 5500;
+let minimumOrder = 3000;
+let walletBalance = 4000;
+let premiumMember = true;
+
+// 1. Check if the cart total meets the minimum order requirement.
+if (cartTotal >= minimumOrder) {
+    console.log("Minimum order requirement met");
+} else {
+    console.log("Minimum order requirement not met");
+}
+
+// 2. Check if the user has enough balance.
+if (walletBalance >= cartTotal) {
+    console.log("Enough balance");
+} else {
+    console.log("Not enough balance");
+}
+
+// 3. Check if the order can be placed.
+if (cartTotal >= minimumOrder && walletBalance >= cartTotal) {
+    console.log("Order can be placed");
+} else {
+    console.log("Order cannot be placed");
+}
+
+// 4. Check if the user gets free delivery.
+if (premiumMember || cartTotal > 5000) {
+    console.log("Free delivery available");
+} else {
+    console.log("No free delivery");
+}
+
+// 5. Compare walletBalance and cartTotal.
+if (walletBalance >= cartTotal) {
+    console.log("Wallet balance is enough");
+} else {
+    console.log("Wallet balance is less");
+}
+
+// 6. Check if premiumMember is strictly equal to true.
+if (premiumMember === true) {
+    console.log("Premium member");
+} else {
+    console.log("Not a premium member");
+}
+
+
+// ==================== MIXED CHALLENGE 3 — GAMING PLATFORM ====================
+
+let playerLevel = 18;
+let requiredLevel = 15;
+let coins = 1800;
+let requiredCoins = 2000;
+let premiumPass = true;
+
+// 1.
+if (playerLevel >= requiredLevel) {
+    console.log("Level requirement met");
+} else {
+    console.log("Level requirement not met");
+}
+
+// 2.
+if (coins >= requiredCoins) {
+    console.log("Enough coins");
+} else {
+    console.log("Not enough coins");
+}
+
+// 3.
+if (playerLevel >= requiredLevel && coins >= requiredCoins) {
+    console.log("Special mission unlocked");
+} else {
+    console.log("Special mission locked");
+}
+
+// 4.
+if (premiumPass || playerLevel > 20) {
+    console.log("VIP content unlocked");
+} else {
+    console.log("VIP content locked");
+}
+
+// 5.
+if (requiredCoins <= coins) {
+    console.log("Coins are enough");
+} else {
+    console.log("Coins are not enough");
+}
+
+// 6.
+if (premiumPass !== false) {
+    console.log("Premium pass is active");
+} else {
+    console.log("Premium pass is inactive");
+}
+
+
+// ==================== MIXED CHALLENGE 4 — BANK ACCOUNT VERIFICATION ====================
+
+let accountBalance = 50000;
+let withdrawalAmount = 15000;
+let pinVerified = true;
+let dailyLimit = 20000;
+
+// 1.
+if (withdrawalAmount <= dailyLimit) {
+    console.log("Within daily limit");
+} else {
+    console.log("Daily limit exceeded");
+}
+
+// 2.
+if (accountBalance >= withdrawalAmount) {
+    console.log("Sufficient balance");
+} else {
+    console.log("Insufficient balance");
+}
+
+// 3.
+if (pinVerified && accountBalance >= withdrawalAmount) {
+    console.log("Withdrawal approved");
+} else {
+    console.log("Withdrawal rejected");
+}
+
+// 4.
+if (accountBalance > 100000 || pinVerified) {
+    console.log("Special withdrawal allowed");
+} else {
+    console.log("Special withdrawal not allowed");
+}
+
+// 5.
+if (withdrawalAmount <= dailyLimit) {
+    console.log("Withdrawal amount is valid");
+} else {
+    console.log("Withdrawal amount exceeds limit");
+}
+
+// 6.
+if (pinVerified === true) {
+    console.log("PIN verified");
+} else {
+    console.log("PIN not verified");
+}
+
+
+// ==================== MIXED CHALLENGE 5 — EVENT REGISTRATION SYSTEM ====================
+
+let age = 19;
+let minimumAge = 18;
+let registeredParticipants = 480;
+let maximumParticipants = 500;
+let vipInvite = false;
+
+// 1.
+if (age >= minimumAge) {
+    console.log("Age requirement met");
+} else {
+    console.log("Age requirement not met");
+}
+
+// 2.
+if (registeredParticipants < maximumParticipants) {
+    console.log("Seats available");
+} else {
+    console.log("No seats available");
+}
+
+// 3.
+if (age >= minimumAge && registeredParticipants < maximumParticipants) {
+    console.log("Registration successful");
+} else {
+    console.log("Registration failed");
+}
+
+// 4.
+if (vipInvite || age > 25) {
+    console.log("VIP access granted");
+} else {
+    console.log("VIP access denied");
+}
+
+// 5.
+if (registeredParticipants < maximumParticipants) {
+    console.log("Participants are within limit");
+} else {
+    console.log("Participant limit reached");
+}
+
+// 6.
+if (vipInvite !== true) {
+    console.log("No VIP invite");
+} else {
+    console.log("VIP invite available");
+}
+
+
+// ==================== MIXED CHALLENGE 6 — JOB APPLICATION PORTAL ====================
+
+let experience = 3;
+let requiredExperience = 2;
+let degreeCompleted = true;
+let referralAvailable = false;
+
+// 1.
+if (experience >= requiredExperience) {
+    console.log("Experience requirement met");
+} else {
+    console.log("Experience requirement not met");
+}
+
+// 2.
+if (degreeCompleted) {
+    console.log("Degree completed");
+} else {
+    console.log("Degree not completed");
+}
+
+// 3.
+if (experience >= requiredExperience && degreeCompleted) {
+    console.log("Eligible for interview");
+} else {
+    console.log("Not eligible for interview");
+}
+
+// 4.
+if (degreeCompleted || referralAvailable) {
+    console.log("Priority consideration");
+} else {
+    console.log("Normal consideration");
+}
+
+// 5.
+if (experience >= requiredExperience) {
+    console.log("Experience is sufficient");
+} else {
+    console.log("Experience is insufficient");
+}
+
+// 6.
+if (referralAvailable === true) {
+    console.log("Referral available");
+} else {
+    console.log("No referral available");
+}
+
+
+// ==================== MIXED CHALLENGE 7 — UNIVERSITY ADMISSION ====================
+
+let testScore = 82;
+let requiredScore = 75;
+let documentsSubmitted = true;
+let sportsQuota = false;
+
+// 1.
+if (testScore >= requiredScore) {
+    console.log("Required score achieved");
+} else {
+    console.log("Required score not achieved");
+}
+
+// 2.
+if (documentsSubmitted) {
+    console.log("Documents submitted");
+} else {
+    console.log("Documents not submitted");
+}
+
+// 3.
+if (testScore >= requiredScore && documentsSubmitted) {
+    console.log("Admission granted");
+} else {
+    console.log("Admission denied");
+}
+
+// 4.
+if (sportsQuota || testScore > 90) {
+    console.log("Alternative admission available");
+} else {
+    console.log("No alternative admission");
+}
+
+// 5.
+if (testScore >= requiredScore) {
+    console.log("Score meets requirement");
+} else {
+    console.log("Score does not meet requirement");
+}
+
+if (sportsQuota === false) {
+    console.log("Sports quota not available");
+} else {
+    console.log("Sports quota available");
+}
+   </script>
+
+</body>
+
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Assignment 5</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+min-height:100vh;
+padding:40px 20px;
+background:linear-gradient(-45deg,#0f172a,#1e293b,#312e81,#0f766e);
+background-size:400% 400%;
+animation:bgAnimation 12s ease infinite;
+color:#fff;
+}
+
+@keyframes bgAnimation{
+
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+}
+
+.back-btn{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:12px 22px;
+background:#2563eb;
+color:#fff;
+text-decoration:none;
+border-radius:50px;
+font-weight:600;
+margin-bottom:25px;
+transition:.3s;
+}
+
+.back-btn:hover{
+background:#1d4ed8;
+transform:translateX(-5px);
+}
+
+h1{
+text-align:center;
+font-size:42px;
+margin-bottom:10px;
+}
+
+h1 i{
+color:#facc15;
+margin-right:10px;
+}
+
+.subtitle{
+text-align:center;
+color:#cbd5e1;
+margin-bottom:35px;
+font-size:18px;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.15);
+border-radius:22px;
+padding:30px;
+margin-bottom:30px;
+box-shadow:0 20px 45px rgba(0,0,0,.35);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card h2{
+margin-bottom:20px;
+font-size:24px;
+color:#38bdf8;
+}
+
+.card h2 i{
+margin-right:10px;
+}
+
+input{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:none;
+outline:none;
+border-radius:12px;
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.15);
+color:#fff;
+font-size:16px;
+}
+
+input::placeholder{
+color:#cbd5e1;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:12px;
+background:linear-gradient(45deg,#06b6d4,#2563eb);
+color:#fff;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+margin-bottom:20px;
+}
+
+button:hover{
+transform:translateY(-4px);
+box-shadow:0 12px 25px rgba(37,99,235,.4);
+}
+
+.output{
+background:#111827;
+border-left:5px solid #06b6d4;
+padding:20px;
+border-radius:15px;
+min-height:70px;
+max-height:300px;
+overflow-y:auto;
+}
+
+.output p,
+.output h3{
+padding:10px;
+margin-bottom:10px;
+background:rgba(255,255,255,.05);
+border-radius:10px;
+}
+
+.output::-webkit-scrollbar{
+width:8px;
+}
+
+.output::-webkit-scrollbar-thumb{
+background:#06b6d4;
+border-radius:20px;
+}
+
+.output::-webkit-scrollbar-track{
+background:#0f172a;
+}
+
+@media(max-width:768px){
+
+body{
+padding:20px 15px;
+}
+
+h1{
+font-size:30px;
+}
+
+.card{
+padding:20px;
+}
+
+.card h2{
+font-size:20px;
+}
+
+button{
+font-size:15px;
+}
+
+}</style>
+<body>
+
+<div class="container">
+
+<a href="index.html" class="back-btn">
+<i class="fa-solid fa-arrow-left"></i>
+Back to Home
+</a>
+
+<h1>
+<i class="fa-brands fa-js"></i>
+JavaScript Assignment 5
+</h1>
+
+<p class="subtitle">
+Loops & Pattern Programs
+</p>
+
+<!-- Exercise 1 -->
+
+<div class="card">
+
+<h2>
+<i class="fa-solid fa-table"></i>
+Exercise 1 - Multiplication Table
+</h2>
+
+<input type="number" placeholder="Table Of" id="table_off">
+
+<input type="number" placeholder="Number of Times" id="number_of_times">
+
+<button id="table_button">
+
+Generate Table
+
+</button>
+
+<div class="output" id="table"></div>
+
+</div>
+
+<!-- Exercise 2 -->
+
+<div class="card">
+
+<h2>
+<i class="fa-solid fa-list-ol"></i>
+Exercise 2 - Even Numbers
+</h2>
+
+<input type="number" placeholder="Starting Number" id="starting">
+
+<input type="number" placeholder="Ending Number" id="ending">
+
+<button id="even_button">
+
+Show Even Numbers
+
+</button>
+
+<div class="output" id="even_result"></div>
+
+</div>
+
+<!-- Exercise 3 -->
+
+<div class="card">
+
+<h2>
+<i class="fa-solid fa-hourglass-half"></i>
+Exercise 3 - Countdown
+</h2>
+
+<input type="number" placeholder="Enter Number" id="countdown_input">
+
+<button id="countdown_button">
+
+Start Countdown
+
+</button>
+
+<div class="output" id="countdown"></div>
+
+</div>
+
+<!-- Exercise 4 -->
+
+<div class="card">
+
+<h2>
+<i class="fa-solid fa-calculator"></i>
+Exercise 4 - Sum Calculator
+</h2>
+
+<input type="number" placeholder="Enter Number" id="sum_input">
+
+<button id="sum_button">
+
+Calculate Sum
+
+</button>
+
+<div class="output" id="sum"></div>
+
+</div>
+
+<!-- Exercise 5 -->
+
+<div class="card">
+
+<h2>
+<i class="fa-solid fa-star"></i>
+Exercise 5 - Pattern Generator
+</h2>
+
+<input type="number" placeholder="Enter Number" id="pattern_input">
+
+<button id="pattern_button">
+
+Generate Pattern
+
+</button>
+
+<div class="output" id="pattern"></div>
+
+</div>
+
+</div>
+
+<script>
+
+// Exercise 1
+let tableOff = document.getElementById("table_off")
+let numberOfTimes = document.getElementById("number_of_times")
+let tableBtn = document.getElementById("table_button")
+let tableDiv = document.getElementById("table")
+
+let renderTable = () => {
+
+    let tableOffValue = tableOff.value
+    let numberOfTimesValue = numberOfTimes.value
+
+    tableDiv.innerHTML = ""
+
+    for (let x = 1; x <= numberOfTimesValue; x++) {
+        tableDiv.innerHTML += "<p>" + tableOffValue + " x " + x + " = " + (tableOffValue * x) + "</p>"
+    }
+}
+
+tableBtn.addEventListener("click", renderTable)
+
+
+// Exercise 2
+let startingNo = document.getElementById("starting")
+let endingNo = document.getElementById("ending")
+let evenBtn = document.getElementById("even_button")
+let evenResult = document.getElementById("even_result")
+
+let renderEven = () => {
+
+    let startingNoValue = Number(startingNo.value)
+    let endingNoValue = Number(endingNo.value)
+
+    evenResult.innerHTML = ""
+
+    for (let x = startingNoValue; x <= endingNoValue; x++) {
+
+        if (x % 2 == 0) {
+            evenResult.innerHTML += "<p>" + x + "</p>"
+        }
+
+    }
+
+}
+
+evenBtn.addEventListener("click", renderEven)
+
+
+// Exercise 3
+let countdownInput = document.getElementById("countdown_input")
+let countdownBtn = document.getElementById("countdown_button")
+let countdownDiv = document.getElementById("countdown")
+
+let renderCountdown = () => {
+
+    let countdownValue = Number(countdownInput.value)
+
+    countdownDiv.innerHTML = ""
+
+    for (let x = countdownValue; x >= 1; x--) {
+        countdownDiv.innerHTML += "<p>" + x + "</p>"
+    }
+
+}
+
+countdownBtn.addEventListener("click", renderCountdown)
+
+
+// Exercise 4
+let sumInput = document.getElementById("sum_input")
+let sumBtn = document.getElementById("sum_button")
+let sumDiv = document.getElementById("sum")
+
+let renderSum = () => {
+
+    let sumValue = Number(sumInput.value)
+    let total = 0
+
+    for (let x = 1; x <= sumValue; x++) {
+        total += x
+    }
+
+    sumDiv.innerHTML = "<h3>Sum = " + total + "</h3>"
+
+}
+
+sumBtn.addEventListener("click", renderSum)
+
+
+// Exercise 5
+let patternInput = document.getElementById("pattern_input")
+let patternBtn = document.getElementById("pattern_button")
+let patternDiv = document.getElementById("pattern")
+
+let renderPattern = () => {
+
+    let patternValue = Number(patternInput.value)
+
+    patternDiv.innerHTML = ""
+
+    for (let i = 1; i <= patternValue; i++) {
+
+        let line = ""
+
+        for (let j = 1; j <= i; j++) {
+            line += j
+        }
+
+        patternDiv.innerHTML += "<p>" + line + "</p>"
+    }
+
+}
+
+patternBtn.addEventListener("click", renderPattern)
+</script>
+
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Assignment 4</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(-45deg,#0f172a,#1e3a8a,#312e81,#0f766e);
+    background-size:400% 400%;
+    animation:bg 12s ease infinite;
+    color:#fff;
+    padding:40px 20px;
+}
+
+@keyframes bg{
+
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 24px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    border-radius:50px;
+    font-weight:600;
+    transition:.3s;
+    margin-bottom:30px;
+}
+
+.back-btn:hover{
+    background:#1d4ed8;
+    transform:translateX(-5px);
+}
+
+h1{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#cbd5e1;
+    margin-bottom:35px;
+    font-size:18px;
+}
+
+.card{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:22px;
+    padding:30px;
+    margin-bottom:30px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 45px rgba(6,182,212,.25);
+}
+
+.icon{
+    width:80px;
+    height:80px;
+    margin:auto;
+    margin-bottom:20px;
+    border-radius:50%;
+    background:linear-gradient(45deg,#06b6d4,#2563eb);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:35px;
+    color:white;
+}
+
+.bulb-icon{
+    font-size:40px;
+}
+
+.card h2{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.marks,
+.age,
+.status{
+    font-size:42px;
+    color:#38bdf8;
+    margin:20px 0;
+    word-break:break-word;
+}
+
+.btn-group{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+button{
+    padding:14px 24px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    background:linear-gradient(45deg,#06b6d4,#2563eb);
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 25px rgba(37,99,235,.4);
+}
+
+.add{
+    background:linear-gradient(45deg,#22c55e,#16a34a);
+}
+
+.deduct{
+    background:linear-gradient(45deg,#ef4444,#dc2626);
+}
+
+.birthday{
+    background:linear-gradient(45deg,#f59e0b,#f97316);
+}
+
+.back{
+    background:linear-gradient(45deg,#6366f1,#4f46e5);
+}
+
+.on{
+    background:linear-gradient(45deg,#22c55e,#16a34a);
+}
+
+.off{
+    background:linear-gradient(45deg,#ef4444,#dc2626);
+}
+
+@media(max-width:768px){
+
+body{
+    padding:20px 15px;
+}
+
+h1{
+    font-size:30px;
+}
+
+.card{
+    padding:22px;
+}
+
+.card h2{
+    font-size:22px;
+}
+
+.marks,
+.age,
+.status{
+    font-size:32px;
+}
+
+.btn-group{
+    flex-direction:column;
+}
+
+button{
+    width:100%;
+}
+
+}</style>
+<body>
+
+<div class="container">
+
+<a href="index.html" class="back-btn">
+<i class="fa-solid fa-arrow-left"></i>
+Back to Home
+</a>
+
+<h1>
+<i class="fa-brands fa-js"></i>
+JavaScript Assignment 4
+</h1>
+
+<p class="subtitle">
+Student Dashboard
+</p>
+
+<!-- Marks Card -->
+
+<div class="card">
+
+<div class="icon">
+<i class="fa-solid fa-graduation-cap"></i>
+</div>
+
+<h2>Student Marks</h2>
+
+<h1 class="marks">50</h1>
+
+<div class="btn-group">
+
+<button class="add">
+<i class="fa-solid fa-plus"></i>
+Add 5 Marks
+</button>
+
+<button class="deduct">
+<i class="fa-solid fa-minus"></i>
+Deduct 5 Marks
+</button>
+
+</div>
+
+</div>
+
+<!-- Age Card -->
+
+<div class="card">
+
+<div class="icon">
+<i class="fa-solid fa-cake-candles"></i>
+</div>
+
+<h2>Student Age</h2>
+
+<h1 class="age">18</h1>
+
+<div class="btn-group">
+
+<button class="birthday">
+🎉 Birthday
+</button>
+
+<button class="back">
+↩ Previous Year
+</button>
+
+</div>
+
+</div>
+
+<!-- Bulb Card -->
+
+<div class="card">
+
+<div class="icon bulb-icon">
+💡
+</div>
+
+<h2>Bulb Status</h2>
+
+<h1 class="status">Bulb is OFF</h1>
+
+<div class="btn-group">
+
+<button class="on">
+🟢 Turn ON
+</button>
+
+<button class="off">
+🔴 Turn OFF
+</button>
+
+</div>
+
+</div>
+
+</div>
+<script>// ===================== MARKS =====================
+let marks = 50;
+
+let marksHeading = document.querySelector(".marks");
+let addBtn = document.querySelector(".add");
+let deductBtn = document.querySelector(".deduct");
+
+function addMarks() {
+    marks += 5;
+    marksHeading.innerHTML = "Marks: " + marks;
+}
+
+function deductMarks() {
+    marks -= 5;
+    marksHeading.innerHTML = "Marks: " + marks;
+}
+
+addBtn.addEventListener("click", addMarks);
+deductBtn.addEventListener("click", deductMarks);
+
+// ===================== AGE =====================
+let age = 18;
+
+let ageHeading = document.querySelector(".age");
+let birthdayBtn = document.querySelector(".birthday");
+let backBtn = document.querySelector(".back");
+
+function incrementAge() {
+    age++;
+    ageHeading.innerHTML = "Age: " + age;
+}
+
+function decrementAge() {
+    age--;
+    ageHeading.innerHTML = "Age: " + age;
+}
+
+birthdayBtn.addEventListener("click", incrementAge);
+backBtn.addEventListener("click", decrementAge);
+
+// ===================== BULB =====================
+let statusHeading = document.querySelector(".status");
+
+let onBtn = document.querySelector(".on");
+let offBtn = document.querySelector(".off");
+
+function turnOn() {
+    statusHeading.innerHTML = "Bulb is ON";
+}
+
+function turnOff() {
+    statusHeading.innerHTML = "Bulb is OFF";
+}
+
+onBtn.addEventListener("click", turnOn);
+offBtn.addEventListener("click", turnOff);</script>
+</body>
+
+</html>

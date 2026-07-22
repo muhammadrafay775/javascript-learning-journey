@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone Store</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #050816;
+            --card: rgba(255, 255, 255, .08);
+            --card2: rgba(255, 255, 255, .05);
+            --border: rgba(255, 255, 255, .15);
+            --blue: #0A84FF;
+            --white: #ffffff;
+            --gray: #b7b7b7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ANIMATED GRID BACKGROUND ON HTML */
+        html::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, .03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: gridMove 18s linear infinite;
+            z-index: -5;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--white);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #020617, #0f172a, #111827, #1e293b);
+            background-size: 400% 400%;
+            animation: bgAnimation 12s ease infinite;
+            padding: 40px 20px 120px;
+            position: relative;
+        }
+
+        @keyframes bgAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* GLOW ORB 1 */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            background: #0A84FF;
+            filter: blur(180px);
+            left: -150px;
+            top: -120px;
+            opacity: .25;
+            animation: move1 15s infinite alternate;
+            z-index: -2;
+        }
+
+        /* GLOW ORB 2 */
+        body::after {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: #9333ea;
+            filter: blur(200px);
+            right: -180px;
+            bottom: -180px;
+            opacity: .25;
+            animation: move2 15s infinite alternate;
+            z-index: -2;
+        }
+
+        @keyframes move1 { 100% { transform: translate(150px, 100px); } }
+        @keyframes move2 { 100% { transform: translate(-120px, -80px); } }
+
+        @keyframes gridMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(40px); }
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 60px;
+            text-align: center;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #fff, #0A84FF, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleGlow 3s infinite;
+        }
+
+        @keyframes titleGlow {
+            50% { filter: drop-shadow(0 0 18px #0A84FF); }
+        }
+
+        h1::after {
+            content: "";
+            display: block;
+            width: 120px;
+            height: 5px;
+            margin: 12px auto;
+            background: linear-gradient(90deg, transparent, #0A84FF, transparent);
+            border-radius: 20px;
+            animation: lineGlow 2s infinite;
+        }
+
+        @keyframes lineGlow { 50% { width: 170px; } }
+
+        .subtitle {
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 40px;
+            color: #b7b7b7;
+            letter-spacing: 3px;
+            font-size: 14px;
+        }
+
+        .intake {
+            max-width: 1100px;
+            margin: auto;
+            background: rgba(255, 255, 255, .08);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border: 1px solid rgba(255, 255, 255, .15);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+            transition: .4s;
+            position: relative;
+            z-index: 10;
+        }
+
+        .intake:hover {
+            transform: translateY(-5px);
+        }
+
+        .intake-fields {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .intake input {
+            flex: 1;
+            min-width: 220px;
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .15);
+            padding: 14px 16px;
+            border-radius: 12px;
+            color: white;
+            outline: none;
+            font-size: 15px;
+            transition: .35s;
+        }
+
+        .intake input::placeholder {
+            color: #9ca3af;
+            transition: .4s;
+        }
+
+        .intake input:focus::placeholder {
+            opacity: .4;
+            padding-left: 10px;
+        }
+
+        .intake input:focus {
+            border-color: #0A84FF;
+            box-shadow: 0 0 20px rgba(10, 132, 255, .5);
+            transform: scale(1.03);
+            background: rgba(255, 255, 255, .09);
+        }
+
+        #addPhoneBtn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+            background: linear-gradient(45deg, #0A84FF, #2563eb);
+            color: white;
+            transition: .35s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #addPhoneBtn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, .35);
+            transform: skewX(-25deg);
+            transition: .6s;
+        }
+
+        #addPhoneBtn:hover::before { left: 130%; }
+
+        #addPhoneBtn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(10, 132, 255, .5);
+        }
+
+        #addPhoneBtn:active {
+            transform: scale(.95);
+        }
+
+        /* ===========================
+           PHONE CARDS
+        =========================== */
+        #phones_list {
+            max-width: 1200px;
+            margin: 50px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .phone-card {
+            width: 290px;
+            background: rgba(255, 255, 255, .08);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border: 1px solid rgba(255, 255, 255, .12);
+            border-radius: 22px;
+            overflow: hidden;
+            transition: transform .45s, border-color .45s, box-shadow .45s, rotate .45s;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, .35);
+            opacity: 0;
+            animation: cardShow .8s forwards, float 5s ease-in-out infinite;
+        }
+
+        .phone-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .35), transparent);
+            transition: .9s;
+        }
+
+        .phone-card:hover::before { left: 130%; }
+
+        .phone-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 25px 60px rgba(10, 132, 255, .35);
+            border-color: #0A84FF;
+            rotate: -1deg;
+        }
+
+        @keyframes cardShow {
+            0% { opacity: 0; transform: translateY(60px) scale(.8); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .phone-card::after {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: 22px;
+            background: linear-gradient(45deg, transparent, rgba(10, 132, 255, .8), transparent);
+            opacity: 0;
+            transition: .4s;
+            z-index: -1;
+        }
+
+        .phone-card:hover::after {
+            opacity: 1;
+            filter: blur(15px);
+        }
+
+        /* ===========================
+           IMAGE AREA
+        =========================== */
+        .thumb-wrap {
+            height: 270px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .thumb-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .phone-card:hover img {
+            transform: scale(1.12) rotate(2deg);
+        }
+
+        .thumb-wrap::before {
+            content: " Apple";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+            opacity: 0;
+            transition: .5s;
+            background: rgba(0, 0, 0, .45);
+            padding: 12px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            z-index: 2;
+        }
+
+        .phone-card:hover .thumb-wrap::before { opacity: 1; }
+
+        /* ===========================
+           INFO AREA
+        =========================== */
+        .info { padding: 20px; }
+        .name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .storage {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: rgba(10, 132, 255, .18);
+            border-radius: 30px;
+            font-size: 14px;
+        }
+        .price {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 10px 18px;
+            border-radius: 30px;
+            background: #0A84FF;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            animation: priceGlow 2s infinite;
+        }
+
+        @keyframes priceGlow {
+            50% { box-shadow: 0 0 20px rgba(10, 132, 255, .7); }
+        }
+
+        .empty-state {
+            width: 100%;
+            padding: 50px;
+            text-align: center;
+            font-size: 22px;
+            color: #bdbdbd;
+        }
+
+        /* ===========================
+           FLOAT CARD DELAYS
+        =========================== */
+        .phone-card:nth-child(1) { animation-delay: 0s, 0s; }
+        .phone-card:nth-child(2) { animation-delay: 0.1s, 0.5s; }
+        .phone-card:nth-child(3) { animation-delay: 0.2s, 1s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-thumb { background: #0A84FF; border-radius: 50px; }
+        ::-webkit-scrollbar-track { background: #08111f; }
+
+        /* RESPONSIVE */
+        @media(max-width:900px) { .phone-card { width: 320px; } }
+        @media(max-width:650px) {
+            .intake-fields { flex-direction: column; }
+            .intake input, #addPhoneBtn, .phone-card { width: 100%; }
+            h1 { font-size: 42px; }
+            .subtitle { font-size: 12px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Apple iPhone Store</h1>
+    <p class="subtitle">// Latest Apple iPhones Collection</p>
+
+    <div class="intake">
+        <div class="intake-fields">
+            <input type="text" placeholder="iPhone Model" id="phone_name">
+            <input type="text" placeholder="Storage (e.g. 128GB)" id="phone_storage">
+            <input type="text" placeholder="Price (e.g. $999)" id="phone_price">
+            <input type="url" placeholder="Image URL (Optional)" id="phone_img">
+            <button id="addPhoneBtn">Add iPhone</button>
+        </div>
+    </div>
+
+    <div id="phones_list"></div>
+
+    <script>
+        let phones_list = document.getElementById("phones_list");
+        let phone_name = document.getElementById("phone_name");
+        let phone_storage = document.getElementById("phone_storage");
+        let phone_price = document.getElementById("phone_price");
+        let phone_img = document.getElementById("phone_img");
+        let add_phone_btn = document.getElementById("addPhoneBtn");
+
+        let phones = [
+            {
+                thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmDrRbWZGaT6yOtBM3pFPfq5aYMLM84_lkY8scCbDA-A&s=10",
+                name: "iPhone 16 Pro Max",
+                storage: "256GB",
+                price: "3 LACS"
+            },
+            {
+                thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpGenhjdbJ1w5AppUIyR1rh9M-xWCgaKdy6SLfr3yBFQ&s=10",
+                name: "iPhone 16 Pro",
+                storage: "128GB",
+                price: "2.2 LACS"
+            },
+            {
+                thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDJ8Hd4Y6_9NBiK0IxUGQYTkM6G0GLcOsx6IAN1PYO0Q&s=10",
+                name: "iPhone 15 Plus",
+                storage: "256GB",
+                price: "1.8 LACS"
+            }
+        ];
+
+        let renderPhones = () => {
+            phones_list.innerHTML = "";
+
+            if (phones.length === 0) {
+                phones_list.innerHTML = `
+                <div class="empty-state">
+                    No iPhones Available
+                </div>`;
+                return;
+            }
+
+            phones.forEach((data) => {
+                let card = `
+                <div class="phone-card">
+                    <div class="thumb-wrap">
+                        <img src="${data.thumbnail}" alt="${data.name}"
+                        onerror="this.src='https://placehold.co/300x300?text=No+Image'">
+                    </div>
+                    <div class="info">
+                        <h2 class="name">${data.name}</h2>
+                        <span class="storage">Storage : ${data.storage}</span>
+                        <br><br>
+                        <span class="price">Price : ${data.price}</span>
+                    </div>
+                </div>`;
+                phones_list.innerHTML += card;
+            });
+        };
+
+        // Initial Render
+        renderPhones();
+
+        let addPhone = () => {
+            // Validation: Agar koi required field empty ho to alert dikhaye
+            if (!phone_name.value.trim() || !phone_storage.value.trim() || !phone_price.value.trim()) {
+                alert("Please fill out Name, Storage, and Price fields!");
+                return;
+            }
+
+            let phoneObj = {
+                thumbnail: phone_img.value.trim() || `https://placehold.co/300x300?text=${encodeURIComponent(phone_name.value)}`,
+                name: phone_name.value.trim(),
+                storage: phone_storage.value.trim(),
+                price: phone_price.value.trim()
+            };
+
+            phones.push(phoneObj);
+            renderPhones();
+
+            // Clear inputs
+            phone_name.value = "";
+            phone_storage.value = "";
+            phone_price.value = "";
+            phone_img.value = "";
+            
+            phone_name.focus();
+        };
+
+        add_phone_btn.addEventListener("click", addPhone);
+    </script>
+
+</body>
+</html>

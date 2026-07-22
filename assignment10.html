@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Assignment 10 | Student Operator</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#0f172a,#1e293b,#312e81);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:50px 20px;
+    overflow-x:hidden;
+    position:relative;
+    color:#fff;
+}
+
+/* Background Blur */
+
+.bg1,
+.bg2{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(120px);
+    z-index:-1;
+}
+
+.bg1{
+    width:320px;
+    height:320px;
+    background:#06b6d4;
+    top:-80px;
+    left:-80px;
+}
+
+.bg2{
+    width:280px;
+    height:280px;
+    background:#7c3aed;
+    bottom:-80px;
+    right:-80px;
+}
+
+/* Container */
+
+.container{
+    width:100%;
+    max-width:900px;
+}
+
+/* Back Button */
+
+.back{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    color:#fff;
+    background:#2563eb;
+    padding:12px 22px;
+    border-radius:50px;
+    margin-bottom:25px;
+    transition:.3s;
+}
+
+.back:hover{
+    background:#1d4ed8;
+    transform:translateX(-5px);
+}
+
+/* Main Card */
+
+.card{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:25px;
+    padding:40px;
+    box-shadow:0 20px 45px rgba(0,0,0,.4);
+}
+
+.badge{
+    display:inline-block;
+    background:linear-gradient(45deg,#06b6d4,#2563eb);
+    padding:10px 22px;
+    border-radius:50px;
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+.card h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.description{
+    color:#d1d5db;
+    margin-bottom:35px;
+    font-size:18px;
+}
+
+/* Form */
+
+.form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.input-box{
+    display:flex;
+    flex-direction:column;
+}
+
+.input-box label{
+    margin-bottom:10px;
+    font-weight:600;
+    color:#38bdf8;
+}
+
+.input-box label i{
+    margin-right:8px;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:15px;
+    border:none;
+    outline:none;
+    border-radius:15px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    color:white;
+    font-size:16px;
+}
+
+textarea{
+    resize:none;
+    height:130px;
+}
+
+input::placeholder,
+textarea::placeholder{
+    color:#cbd5e1;
+}
+
+/* Buttons */
+
+.buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:10px;
+}
+
+.buttons button{
+    flex:1;
+    min-width:200px;
+    padding:15px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    background:linear-gradient(45deg,#06b6d4,#2563eb);
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.buttons button:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(37,99,235,.4);
+}
+
+/* Result */
+
+.result{
+    margin-top:35px;
+    background:#111827;
+    border-radius:20px;
+    padding:30px;
+    border-left:6px solid #06b6d4;
+}
+
+.placeholder{
+    text-align:center;
+}
+
+.placeholder i{
+    font-size:55px;
+    color:#38bdf8;
+    margin-bottom:15px;
+}
+
+.placeholder h2{
+    margin-bottom:10px;
+}
+
+.row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 0;
+    border-bottom:1px solid rgba(255,255,255,.1);
+    gap:20px;
+}
+
+.row:last-child{
+    border-bottom:none;
+}
+
+.row p{
+    font-weight:600;
+    color:#38bdf8;
+}
+
+.row span{
+    text-align:right;
+    color:#fff;
+    word-break:break-word;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.card{
+    padding:25px;
+}
+
+.card h1{
+    font-size:32px;
+}
+
+.buttons{
+    flex-direction:column;
+}
+
+.buttons button{
+    width:100%;
+}
+
+.row{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.row span{
+    text-align:left;
+}
+
+}</style>
+
+<body>
+
+    <div class="bg1"></div>
+    <div class="bg2"></div>
+
+    <div class="container">
+
+        <a href="index.html" class="back">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Home
+        </a>
+
+        <div class="card">
+
+            <span class="badge">Assignment 10</span>
+
+            <h1>Student Operator</h1>
+
+            <p class="description">
+                JavaScript String Methods & DOM Manipulation
+            </p>
+
+            <div class="form">
+
+                <div class="input-box">
+
+                    <label>
+                        <i class="fa-solid fa-user"></i>
+                        Student Name
+                    </label>
+
+                    <input id="studentName" type="text" placeholder="Enter student name">
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>
+                        <i class="fa-solid fa-location-dot"></i>
+                        City
+                    </label>
+
+                    <input id="city" type="text" placeholder="Enter city">
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>
+                        <i class="fa-solid fa-pen"></i>
+                        Short Information
+                    </label>
+
+                    <textarea id="shortinfo"
+                        placeholder="Write something about the student..."></textarea>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button id="btn">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        Format Information
+                    </button>
+
+                    <button id="checkBtn">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Check Name
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div id="result" class="result">
+
+                <div class="placeholder">
+
+                    <i class="fa-solid fa-laptop-code"></i>
+
+                    <h2>Output</h2>
+
+                    <p>
+                        Fill the form and click <b>Format Information</b>.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        let studentName = document.getElementById("studentName");
+        let city = document.getElementById("city");
+        let shortinfo = document.getElementById("shortinfo");
+
+        let btn = document.getElementById("btn");
+        let checkBtn = document.getElementById("checkBtn");
+
+        let result = document.getElementById("result");
+
+        let operator = () => {
+
+            let studentNamevalue = studentName.value;
+            let cityValue = city.value;
+            let shortintro = shortinfo.value;
+
+            let trim = studentNamevalue.trim();
+
+            let length = trim.length;
+
+            let slice = trim.slice(0, trim.indexOf(" "));
+
+            if (trim.indexOf(" ") == -1) {
+                slice = trim;
+            }
+
+            let upperName = trim.toUpperCase();
+
+            let cityName = cityValue.toLowerCase();
+
+            let replaceIntro = shortintro.replaceAll("student", "developer");
+
+            let substring = replaceIntro.substring(0, 20);
+
+            result.innerHTML = `
+
+            <h2>Processed Result</h2>
+
+            <div class="row">
+
+                <p><strong>Student Name</strong></p>
+                <span>${trim}</span>
+
+            </div>
+
+            <div class="row">
+
+                <p><strong>Name Length</strong></p>
+                <span>${length}</span>
+
+            </div>
+
+            <div class="row">
+
+                <p><strong>First Name</strong></p>
+                <span>${slice}</span>
+
+            </div>
+
+            <div class="row">
+
+                <p><strong>Uppercase</strong></p>
+                <span>${upperName}</span>
+
+            </div>
+
+            <div class="row">
+
+                <p><strong>City</strong></p>
+                <span>${cityName}</span>
+
+            </div>
+
+            <div class="row">
+
+                <p><strong>Updated Intro</strong></p>
+                <span>${replaceIntro}</span>
+
+            </div>
+
+            <div class="row">
+
+                <p><strong>Substring</strong></p>
+                <span>${substring}</span>
+
+            </div>
+
+            `;
+
+        }
+
+        let checkName = () => {
+
+            let trim = studentName.value.trim();
+
+            if (trim.indexOf("Bilal") != -1) {
+
+                alert(trim + " is present in the name.");
+
+            } else {
+
+                alert(trim + " is not present.");
+
+            }
+
+        }
+
+        btn.addEventListener("click", operator);
+        checkBtn.addEventListener("click", checkName);
+
+    </script>
+
+</body>
+
+</html>
